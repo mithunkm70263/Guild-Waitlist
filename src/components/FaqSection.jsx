@@ -233,7 +233,7 @@ export default function FaqSection() {
           <p>Jump in and start building with the right people.</p>
         </div>
         <motion.a
-          href="/apply"
+          href="/get-started"
           className="faq-cta-button"
           whileHover={{ y: -5, scale: 1.04, rotate: -0.5 }}
           whileTap={{ scale: 0.96 }}

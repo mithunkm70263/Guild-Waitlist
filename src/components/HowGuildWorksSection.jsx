@@ -151,7 +151,7 @@ export default function HowGuildWorksSection() {
         }}
       >
         <motion.a
-          href="/apply"
+          href="/get-started"
           className="how-works-cta"
           whileHover={{ y: -8, scale: 1.06, rotate: -0.6 }}
           whileTap={{ scale: 0.95 }}
