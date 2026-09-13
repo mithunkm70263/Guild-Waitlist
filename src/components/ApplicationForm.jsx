@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
 
 const featureCards = [
@@ -105,13 +105,30 @@ function FieldIcon({ type }) {
   );
 }
 
+const VALID_SKILLS = new Set([
+  'AI & Machine Learning',
+  'Web Development',
+  'Programming & DSA',
+  'Mobile App Development',
+  'UI/UX & Product Design',
+  'Cybersecurity',
+  'Data Science',
+  'DevOps & Cloud',
+]);
+
 export default function ApplicationForm() {
+  const [searchParams] = useSearchParams();
+  const initialSkill = (() => {
+    const skill = searchParams.get('skill');
+    return skill && VALID_SKILLS.has(skill) ? skill : '';
+  })();
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     country: '',
     timezone: '',
-    skill: '',
+    skill: initialSkill,
     currentLevel: 'Intermediate',
     weeklyTime: '7-10 hrs',
     commitmentLevel: 'Serious',

@@ -102,7 +102,7 @@ export default function HeroSection() {
         {/* CTA button */}
         <motion.div variants={fadeUp}>
           <motion.a
-            href="/apply"
+            href="/get-started"
             className="btn-cta"
             whileHover={{ scale: 1.08, y: -7, rotate: -1 }}
             whileTap={{ scale: 0.95 }}
