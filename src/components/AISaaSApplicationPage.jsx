@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ApplicationSubmittedCard from './ApplicationSubmittedCard';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
 import '../styles/ai-saas-apply.css';
 
@@ -906,61 +907,27 @@ export default function AISaaSApplicationPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: reduceMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="as-confirm-spark">✓</div>
-
-                <h2 className="as-confirm-title">
-                  We will match you with three founders within 24 hours.
-                </h2>
-                <p className="as-confirm-subtitle">
-                  Thanks for trusting Guild.
-                </p>
-
-                <p className="as-confirm-desc">
-                  Kairos is reviewing your product vision (<strong>{formData.stage || 'Recorded'}</strong>), goals, and weekly commitment. We match AI SaaS founders on ship velocity and revenue intent — not random chat energy.
-                </p>
-
-                <div className="as-confirm-summary">
-                  <h4>✦ Matched Pod Specifications:</h4>
-                  <div className="as-confirm-grid">
-                    <div className="as-confirm-row">
-                      <strong>Founder:</strong>
-                      <span>{formData.fullName || 'Registered Founder'}</span>
-                    </div>
-                    <div className="as-confirm-row">
-                      <strong>Pod Size:</strong>
-                      <span>3 founders per pod</span>
-                    </div>
-                    <div className="as-confirm-row">
-                      <strong>Stage:</strong>
-                      <span>{formData.stage || 'Standard tier'}</span>
-                    </div>
-                    <div className="as-confirm-row">
-                      <strong>Weekly Hours:</strong>
-                      <span>{formData.weeklyHours || 'Committed'}</span>
-                    </div>
-                    <div className="as-confirm-row">
-                      <strong>AI Stack:</strong>
-                      <span>{formData.aiBuildApproach || 'Recorded'}</span>
-                    </div>
-                    <div className="as-confirm-row">
-                      <strong>Timezone:</strong>
-                      <span>{timezoneLabel || 'Recorded'}</span>
-                    </div>
-                    <div className="as-confirm-row">
-                      <strong>Pod Review Time:</strong>
-                      <span>Within 24 hours</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="as-confirm-actions">
-                  <Link to="/dashboard" className="as-btn-dashboard">
-                    Enter Founder Dashboard →
-                  </Link>
-                  <Link to="/builder" className="as-btn-back">
-                    Explore Other Builder Tracks
-                  </Link>
-                </div>
+                <ApplicationSubmittedCard
+                  theme="as"
+                  title="Application received — you're on the list."
+                  subtitle="Thanks for trusting Guild."
+                  description={
+                    <>
+                      Kairos is reviewing your product vision (<strong>{formData.stage || 'Recorded'}</strong>), goals, and weekly commitment. We match AI SaaS founders on ship velocity and revenue intent — not random chat energy.
+                    </>
+                  }
+                  summaryRows={[
+                    { label: 'Founder', value: formData.fullName || 'Registered Founder' },
+                    { label: 'Pod Size', value: '3 founders per pod' },
+                    { label: 'Stage', value: formData.stage || 'Standard tier' },
+                    { label: 'Weekly Hours', value: formData.weeklyHours || 'Committed' },
+                    { label: 'AI Stack', value: formData.aiBuildApproach || 'Recorded' },
+                    { label: 'Timezone', value: timezoneLabel || 'Recorded' },
+                  ]}
+                  dashboardLabel="Enter Founder Dashboard →"
+                  dashboardBtnClass="as-btn-dashboard"
+                  backBtnClass="as-btn-back"
+                />
               </motion.div>
             )}
           </AnimatePresence>

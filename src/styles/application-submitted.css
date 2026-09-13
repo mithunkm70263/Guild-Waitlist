@@ -1,0 +1,314 @@
+/* ===== SHARED APPLICATION SUBMITTED CARD ===== */
+
+.app-submitted {
+  --sub-accent: #2f7d55;
+  --sub-accent-glow: rgba(47, 125, 85, 0.35);
+  --sub-ink: #121212;
+  --sub-cream: #fffdf5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 32px);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-submitted--as {
+  --sub-accent: #4f46e5;
+  --sub-accent-glow: rgba(79, 70, 229, 0.35);
+}
+
+.app-submitted--yt {
+  --sub-accent: #e50914;
+  --sub-accent-glow: rgba(229, 9, 20, 0.35);
+}
+
+.app-submitted--vc {
+  --sub-accent: #8736d8;
+  --sub-accent-glow: rgba(135, 54, 216, 0.4);
+  --sub-cream: #faf7f2;
+}
+
+/* Celebration particles */
+.app-submitted-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.app-submitted-particle {
+  position: absolute;
+  font-size: var(--particle-size, 12px);
+  color: var(--sub-accent);
+  opacity: 0;
+  animation: subParticleFloat var(--particle-dur, 4s) ease-in-out infinite;
+  animation-delay: var(--particle-delay, 0s);
+}
+
+@keyframes subParticleFloat {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg) scale(0.6);
+  }
+  15% {
+    opacity: var(--particle-opacity, 0.5);
+  }
+  50% {
+    opacity: var(--particle-opacity, 0.5);
+    transform: translateY(-28px) rotate(180deg) scale(1);
+  }
+  85% {
+    opacity: 0;
+  }
+}
+
+/* Radial glow behind Kairos */
+.app-submitted-glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--sub-accent-glow) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  z-index: 0;
+  animation: subGlowPulse 3s ease-in-out infinite;
+}
+
+@keyframes subGlowPulse {
+  0%, 100% { transform: translate(-50%, -40%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-50%, -40%) scale(1.15); opacity: 1; }
+}
+
+/* Kairos hero section */
+.app-submitted-kairos {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 8px;
+  width: min(280px, 72vw);
+  height: 240px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.app-submitted-kairos-img {
+  width: auto;
+  height: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(18, 18, 18, 0.18));
+  position: relative;
+  z-index: 2;
+}
+
+/* Speech bubble */
+.app-submitted-bubble {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  z-index: 3;
+  background: var(--sub-cream);
+  border: 2.5px solid var(--sub-ink);
+  border-radius: 18px 18px 18px 4px;
+  padding: 10px 18px;
+  box-shadow: 4px 4px 0 var(--sub-ink);
+  font-family: var(--font-headline, 'Sora', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--sub-accent);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.app-submitted-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 18px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid var(--sub-ink);
+}
+
+.app-submitted-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid var(--sub-cream);
+  z-index: 1;
+}
+
+/* Success badge */
+.app-submitted-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--sub-ink);
+  background: var(--sub-accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 2px 2px 0 var(--sub-ink);
+  position: absolute;
+  bottom: 12px;
+  left: 8px;
+  z-index: 4;
+}
+
+/* Typography */
+.app-submitted-title {
+  font-family: var(--font-headline, 'Sora', sans-serif);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--sub-ink);
+  line-height: 1.15;
+  margin: 12px 0 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.app-submitted-subtitle {
+  font-family: var(--font-label, 'JetBrains Mono', monospace);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--sub-accent);
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.app-submitted-desc {
+  max-width: 580px;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #57534e;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Summary card */
+.app-submitted-summary {
+  width: min(540px, 100%);
+  padding: 22px 24px;
+  border: 2px solid var(--sub-ink);
+  border-radius: 18px;
+  background: rgba(255, 253, 245, 0.9);
+  box-shadow: 4px 4px 0 var(--sub-ink);
+  text-align: left;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.app-submitted--vc .app-submitted-summary {
+  background: rgba(250, 247, 242, 0.95);
+}
+
+.app-submitted-summary h4 {
+  font-family: var(--font-label, 'JetBrains Mono', monospace);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sub-accent);
+  margin-bottom: 14px;
+}
+
+.app-submitted-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.app-submitted-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid #e7e5e4;
+  border-radius: 8px;
+}
+
+.app-submitted-row strong {
+  font-family: var(--font-label, 'JetBrains Mono', monospace);
+  font-size: 0.66rem;
+  color: #78716c;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.app-submitted-row span {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--sub-ink);
+}
+
+/* Actions */
+.app-submitted-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Shimmer line under title */
+.app-submitted-shimmer {
+  width: 60px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--sub-accent), transparent);
+  margin: 0 auto 4px;
+  animation: subShimmer 2.4s ease-in-out infinite;
+}
+
+@keyframes subShimmer {
+  0%, 100% { opacity: 0.4; transform: scaleX(0.8); }
+  50% { opacity: 1; transform: scaleX(1.2); }
+}
+
+@media (max-width: 580px) {
+  .app-submitted-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-submitted-kairos {
+    height: 210px;
+  }
+
+  .app-submitted-kairos-img {
+    height: 170px;
+  }
+
+  .app-submitted-bubble {
+    right: -4px;
+    font-size: 1.15rem;
+    padding: 8px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-submitted-particle,
+  .app-submitted-glow,
+  .app-submitted-shimmer {
+    animation: none;
+  }
+}

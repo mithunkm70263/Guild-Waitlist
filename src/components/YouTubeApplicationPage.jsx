@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ApplicationSubmittedCard from './ApplicationSubmittedCard';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
 import '../styles/youtube-apply.css';
 
@@ -976,61 +977,27 @@ export default function YouTubeApplicationPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: reduceMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="yt-confirm-spark">✓</div>
-
-                <h2 className="yt-confirm-title">
-                  We will match you with three creators within 24 hours.
-                </h2>
-                <p className="yt-confirm-subtitle">
-                  Thanks for trusting Guild.
-                </p>
-
-                <p className="yt-confirm-desc">
-                  Kairos is reviewing your channel niche (<strong>{formData.niche || 'YouTube'}</strong>), subscriber range (<strong>{formData.subscribers || 'Recorded'}</strong>), and weekly rhythm. We match creators on output velocity, not random chat energy.
-                </p>
-
-                <div className="yt-confirm-summary">
-                  <h4>✦ Matched Pod Specifications:</h4>
-                  <div className="yt-confirm-grid">
-                    <div className="yt-confirm-row">
-                      <strong>Creator:</strong>
-                      <span>{formData.fullName || 'Registered Creator'}</span>
-                    </div>
-                    <div className="yt-confirm-row">
-                      <strong>Pod Size:</strong>
-                      <span>3 creators per pod</span>
-                    </div>
-                    <div className="yt-confirm-row">
-                      <strong>Subscribers:</strong>
-                      <span>{formData.subscribers || 'Standard tier'}</span>
-                    </div>
-                    <div className="yt-confirm-row">
-                      <strong>Views:</strong>
-                      <span>{formData.monthlyViews || 'Standard tier'}</span>
-                    </div>
-                    <div className="yt-confirm-row">
-                      <strong>Target Cadence:</strong>
-                      <span>{formData.uploadCadence || '1 weekly upload (Sunday)'}</span>
-                    </div>
-                    <div className="yt-confirm-row">
-                      <strong>Weekly Hours:</strong>
-                      <span>{formData.weeklyHours || 'Committed'}</span>
-                    </div>
-                    <div className="yt-confirm-row">
-                      <strong>Pod Review Time:</strong>
-                      <span>Within 24 hours</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="yt-confirm-actions">
-                  <Link to="/dashboard" className="yt-btn-dashboard">
-                    Enter Creator Dashboard →
-                  </Link>
-                  <Link to="/builder" className="yt-btn-back">
-                    Explore Other Builder Tracks
-                  </Link>
-                </div>
+                <ApplicationSubmittedCard
+                  theme="yt"
+                  title="Application received — you're on the list."
+                  subtitle="Thanks for trusting Guild."
+                  description={
+                    <>
+                      Kairos is reviewing your channel niche (<strong>{formData.niche || 'YouTube'}</strong>), subscriber range (<strong>{formData.subscribers || 'Recorded'}</strong>), and weekly rhythm. We match creators on output velocity, not random chat energy.
+                    </>
+                  }
+                  summaryRows={[
+                    { label: 'Creator', value: formData.fullName || 'Registered Creator' },
+                    { label: 'Pod Size', value: '3 creators per pod' },
+                    { label: 'Subscribers', value: formData.subscribers || 'Standard tier' },
+                    { label: 'Views', value: formData.monthlyViews || 'Standard tier' },
+                    { label: 'Target Cadence', value: formData.uploadCadence || '1 weekly upload (Sunday)' },
+                    { label: 'Weekly Hours', value: formData.weeklyHours || 'Committed' },
+                  ]}
+                  dashboardLabel="Enter Creator Dashboard →"
+                  dashboardBtnClass="yt-btn-dashboard"
+                  backBtnClass="yt-btn-back"
+                />
               </motion.div>
             )}
           </AnimatePresence>

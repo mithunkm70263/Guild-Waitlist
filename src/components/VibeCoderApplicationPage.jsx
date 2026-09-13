@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ApplicationSubmittedCard from './ApplicationSubmittedCard';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
 import '../styles/vibe-coder-apply.css';
 
@@ -1016,59 +1017,28 @@ export default function VibeCoderApplicationPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="vc-confirm-spark">⚡</div>
-
-                <h2 className="vc-confirm-title">
-                  We will match you with two vibe coders within 24 hours.
-                </h2>
-                <p className="vc-confirm-subtitle">
-                  ✦ Welcome to the flow state circle ✦
-                </p>
-
-                <p className="vc-confirm-desc">
-                  Kairos is matching you with 2 fellow builders based on your focus ({' '}
-                  <strong>{formData.weeklyHours}</strong>), coding style, and shared time windows ({' '}
-                  <strong>{formData.timezone}</strong>). You will receive an invitation to your dedicated pod room.
-                </p>
-
-                <div className="vc-confirm-summary">
-                  <h4>✦ Your Pod Match Profile:</h4>
-                  <div className="vc-confirm-grid">
-                    <div className="vc-confirm-row">
-                      <strong>Builder:</strong>
-                      <span>{formData.fullName || 'Flow Hacker'}</span>
-                    </div>
-                    <div className="vc-confirm-row">
-                      <strong>Pod Size:</strong>
-                      <span>3 vibe coders per pod</span>
-                    </div>
-                    <div className="vc-confirm-row">
-                      <strong>Main Goal:</strong>
-                      <span>{formData.mainGoal}</span>
-                    </div>
-                    <div className="vc-confirm-row">
-                      <strong>Weekly Hours:</strong>
-                      <span>{formData.weeklyHours || 'Committed'}</span>
-                    </div>
-                    <div className="vc-confirm-row">
-                      <strong>Pod Energy:</strong>
-                      <span>{formData.podEnergy}</span>
-                    </div>
-                    <div className="vc-confirm-row">
-                      <strong>Stack Highlight:</strong>
-                      <span>{formData.toolsUsed.slice(0, 3).join(', ') || 'AI Native'}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="vc-confirm-actions">
-                  <Link to="/dashboard" className="vc-btn-dashboard">
-                    Enter Builder Dashboard →
-                  </Link>
-                  <Link to="/builder" className="vc-btn-back">
-                    Explore Other Builder Tracks
-                  </Link>
-                </div>
+                <ApplicationSubmittedCard
+                  theme="vc"
+                  title="Application received — you're in the flow."
+                  subtitle="✦ Welcome to the flow state circle ✦"
+                  description={
+                    <>
+                      Kairos is matching you with fellow builders based on your focus (<strong>{formData.weeklyHours}</strong>), coding style, and shared time windows (<strong>{formData.timezone}</strong>). You will receive an invitation to your dedicated pod room.
+                    </>
+                  }
+                  summaryTitle="✦ Your Pod Match Profile:"
+                  summaryRows={[
+                    { label: 'Builder', value: formData.fullName || 'Flow Hacker' },
+                    { label: 'Pod Size', value: '3 vibe coders per pod' },
+                    { label: 'Main Goal', value: formData.mainGoal },
+                    { label: 'Weekly Hours', value: formData.weeklyHours || 'Committed' },
+                    { label: 'Pod Energy', value: formData.podEnergy },
+                    { label: 'Stack Highlight', value: formData.toolsUsed.slice(0, 3).join(', ') || 'AI Native' },
+                  ]}
+                  dashboardLabel="Enter Builder Dashboard →"
+                  dashboardBtnClass="vc-btn-dashboard"
+                  backBtnClass="vc-btn-back"
+                />
               </motion.div>
             )}
           </AnimatePresence>

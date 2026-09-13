@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ApplicationSubmittedCard from './ApplicationSubmittedCard';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
 import '../styles/ai-app-apply.css';
 
@@ -908,57 +909,26 @@ export default function AIAppApplicationPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: reduceMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="aa-confirm-spark">✓</div>
-
-                <h2 className="aa-confirm-title">
-                  We will match you with three builders within 24 hours.
-                </h2>
-                <p className="aa-confirm-subtitle">
-                  Thanks for trusting Guild.
-                </p>
-
-                <p className="aa-confirm-desc">
-                  Kairos is reviewing your app context (<strong>{formData.appStatus || 'Recorded'}</strong>), launch history, and 90-day readiness. We match builders on ship velocity, not random chat energy.
-                </p>
-
-                <div className="aa-confirm-summary">
-                  <h4>✦ Matched Pod Specifications:</h4>
-                  <div className="aa-confirm-grid">
-                    <div className="aa-confirm-row">
-                      <strong>Builder:</strong>
-                      <span>{formData.fullName || 'Registered Builder'}</span>
-                    </div>
-                    <div className="aa-confirm-row">
-                      <strong>Pod Size:</strong>
-                      <span>3 builders per pod</span>
-                    </div>
-                    <div className="aa-confirm-row">
-                      <strong>App Status:</strong>
-                      <span>{formData.appStatus || 'Standard tier'}</span>
-                    </div>
-                    <div className="aa-confirm-row">
-                      <strong>90-Day Ready:</strong>
-                      <span>{formData.threeMonthReady || 'Committed'}</span>
-                    </div>
-                    <div className="aa-confirm-row">
-                      <strong>Weekly Hours:</strong>
-                      <span>{formData.weeklyHours || 'Committed'}</span>
-                    </div>
-                    <div className="aa-confirm-row">
-                      <strong>Pod Review Time:</strong>
-                      <span>Within 24 hours</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="aa-confirm-actions">
-                  <Link to="/dashboard" className="aa-btn-dashboard">
-                    Enter Builder Dashboard →
-                  </Link>
-                  <Link to="/builder" className="aa-btn-back">
-                    Explore Other Builder Tracks
-                  </Link>
-                </div>
+                <ApplicationSubmittedCard
+                  theme="aa"
+                  title="Application received — you're on the list."
+                  subtitle="Thanks for trusting Guild."
+                  description={
+                    <>
+                      Kairos is reviewing your app context (<strong>{formData.appStatus || 'Recorded'}</strong>), launch history, and 90-day readiness. We match builders on ship velocity, not random chat energy.
+                    </>
+                  }
+                  summaryRows={[
+                    { label: 'Builder', value: formData.fullName || 'Registered Builder' },
+                    { label: 'Pod Size', value: '3 builders per pod' },
+                    { label: 'App Status', value: formData.appStatus || 'Standard tier' },
+                    { label: '90-Day Ready', value: formData.threeMonthReady || 'Committed' },
+                    { label: 'Weekly Hours', value: formData.weeklyHours || 'Committed' },
+                  ]}
+                  dashboardLabel="Enter Builder Dashboard →"
+                  dashboardBtnClass="aa-btn-dashboard"
+                  backBtnClass="aa-btn-back"
+                />
               </motion.div>
             )}
           </AnimatePresence>
