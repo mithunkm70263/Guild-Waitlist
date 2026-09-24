@@ -155,7 +155,7 @@ export default function GetStartedPage() {
             onClick={() => startBuilderForm()}
             whileTap={{ scale: 0.985 }}
           >
-            I am a builder/creator.
+            I am a builder/creator  →
           </motion.button>
           <p className="gs-learner-note">Choose your focus in the next step. We&apos;ll use it to find your pod.</p>
         </motion.article>

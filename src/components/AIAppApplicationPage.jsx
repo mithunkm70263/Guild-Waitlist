@@ -925,8 +925,7 @@ export default function AIAppApplicationPage() {
                     { label: '90-Day Ready', value: formData.threeMonthReady || 'Committed' },
                     { label: 'Weekly Hours', value: formData.weeklyHours || 'Committed' },
                   ]}
-                  dashboardLabel="Enter Builder Dashboard →"
-                  dashboardBtnClass="aa-btn-dashboard"
+                  primaryBtnClass="aa-btn-primary"
                   backBtnClass="aa-btn-back"
                 />
               </motion.div>

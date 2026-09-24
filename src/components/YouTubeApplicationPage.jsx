@@ -994,8 +994,7 @@ export default function YouTubeApplicationPage() {
                     { label: 'Target Cadence', value: formData.uploadCadence || '1 weekly upload (Sunday)' },
                     { label: 'Weekly Hours', value: formData.weeklyHours || 'Committed' },
                   ]}
-                  dashboardLabel="Enter Creator Dashboard →"
-                  dashboardBtnClass="yt-btn-dashboard"
+                  primaryBtnClass="yt-btn-primary"
                   backBtnClass="yt-btn-back"
                 />
               </motion.div>

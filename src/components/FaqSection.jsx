@@ -240,17 +240,6 @@ export default function FaqSection() {
         >
           GET STARTED <span>-&gt;</span>
         </motion.a>
-        <div className="faq-social-proof">
-          <div className="faq-avatar-stack" aria-hidden="true">
-            {[1, 2, 3, 4].map((avatar) => (
-              <img key={avatar} src={`/avatar-${avatar}.png`} alt="" />
-            ))}
-          </div>
-          <p>
-            <strong>180+ builders</strong>
-            already shipping in pods
-          </p>
-        </div>
       </motion.div>
     </motion.section>
   );

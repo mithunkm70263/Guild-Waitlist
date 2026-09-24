@@ -924,8 +924,7 @@ export default function AISaaSApplicationPage() {
                     { label: 'AI Stack', value: formData.aiBuildApproach || 'Recorded' },
                     { label: 'Timezone', value: timezoneLabel || 'Recorded' },
                   ]}
-                  dashboardLabel="Enter Founder Dashboard →"
-                  dashboardBtnClass="as-btn-dashboard"
+                  primaryBtnClass="as-btn-primary"
                   backBtnClass="as-btn-back"
                 />
               </motion.div>

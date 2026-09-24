@@ -159,20 +159,6 @@ export default function HowGuildWorksSection() {
           GET STARTED <span>→</span>
         </motion.a>
       </motion.div>
-
-      <motion.p
-        className="how-works-proof"
-        variants={{
-          hidden: { opacity: 0, y: 20 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.55, delay: 0.92 },
-          },
-        }}
-      >
-        180+ builders already shipping in active pods
-      </motion.p>
     </motion.section>
   );
 }

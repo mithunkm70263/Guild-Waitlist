@@ -42,14 +42,6 @@ export default function HeroSection() {
     },
   };
 
-  const avatars = [
-    '/avatar-1.png',
-    '/avatar-2.png',
-    '/avatar-3.png',
-    '/avatar-4.png',
-    '/avatar-5.png',
-  ];
-
   return (
     <section className="hero" aria-labelledby="hero-heading">
       {/* LEFT — Illustration */}
@@ -80,24 +72,6 @@ export default function HeroSection() {
           <br />
           <span><strong>Ship together</strong> instead of learning alone.</span>
         </motion.p>
-
-        {/* Social proof — avatars + count */}
-        <motion.div className="social-proof" variants={fadeUp}>
-          <div className="avatar-stack">
-            {avatars.map((src, i) => (
-              <img
-                key={i}
-                src={src}
-                alt={`Builder ${i + 1}`}
-                width={38}
-                height={38}
-              />
-            ))}
-          </div>
-          <span className="social-proof-text">
-            180+ builders already in active pods
-          </span>
-        </motion.div>
 
         {/* CTA button */}
         <motion.div variants={fadeUp}>

@@ -76,23 +76,25 @@ export default function LoginBuildingNotice() {
           Member login and dedicated pod rooms will go live once pod matching is complete. Join the waitlist today to get matched with your 3/5 person circle.
         </p>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <Link
             to="/get-started"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
-              padding: '14px 24px',
+              gap: '10px',
+              minHeight: '56px',
+              padding: '16px 28px',
               background: '#121212',
               color: '#ffffff',
-              borderRadius: '12px',
+              borderRadius: '14px',
               fontWeight: 800,
-              fontSize: '0.94rem',
+              fontSize: '1.02rem',
               textDecoration: 'none',
               border: '2px solid #121212',
-              boxShadow: '3px 3px 0 #E86F2C',
+              boxShadow: '4px 4px 0 #E86F2C',
+              letterSpacing: '0.02em',
             }}
           >
             Join the Waitlist <span>→</span>
@@ -104,14 +106,17 @@ export default function LoginBuildingNotice() {
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '12px 24px',
+              gap: '8px',
+              minHeight: '52px',
+              padding: '14px 28px',
               background: '#ffffff',
               color: '#121212',
-              borderRadius: '12px',
-              fontWeight: 700,
-              fontSize: '0.88rem',
+              borderRadius: '14px',
+              fontWeight: 800,
+              fontSize: '0.94rem',
               textDecoration: 'none',
-              border: '1.5px solid #d6d3d1',
+              border: '2px solid #121212',
+              boxShadow: '3px 3px 0 #121212',
             }}
           >
             ← Back to Home

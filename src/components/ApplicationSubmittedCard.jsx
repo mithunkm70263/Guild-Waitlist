@@ -22,11 +22,11 @@ export default function ApplicationSubmittedCard({
   description,
   summaryTitle = '✦ Matched Pod Specifications:',
   summaryRows = [],
-  dashboardLabel,
-  dashboardTo = '/dashboard',
+  primaryLabel = 'Explore Builder Tracks →',
+  primaryTo = '/builder',
   backLabel = 'Explore Other Builder Tracks',
   backTo = '/builder',
-  dashboardBtnClass,
+  primaryBtnClass,
   backBtnClass,
 }) {
   const reduceMotion = useReducedMotion();
@@ -163,8 +163,8 @@ export default function ApplicationSubmittedCard({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.85 }}
       >
-        <Link to={dashboardTo} className={dashboardBtnClass}>
-          {dashboardLabel}
+        <Link to={primaryTo} className={primaryBtnClass}>
+          {primaryLabel}
         </Link>
         <Link to={backTo} className={backBtnClass}>
           {backLabel}

@@ -1035,8 +1035,7 @@ export default function VibeCoderApplicationPage() {
                     { label: 'Pod Energy', value: formData.podEnergy },
                     { label: 'Stack Highlight', value: formData.toolsUsed.slice(0, 3).join(', ') || 'AI Native' },
                   ]}
-                  dashboardLabel="Enter Builder Dashboard →"
-                  dashboardBtnClass="vc-btn-dashboard"
+                  primaryBtnClass="vc-btn-primary"
                   backBtnClass="vc-btn-back"
                 />
               </motion.div>

@@ -263,11 +263,20 @@
 /* Actions */
 .app-submitted-actions {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 1;
+}
+
+.app-submitted-actions a,
+.app-submitted-actions button {
+  min-height: 54px;
+  font-size: 0.94rem;
+  font-weight: 800;
+  border-radius: 14px;
 }
 
 /* Shimmer line under title */
